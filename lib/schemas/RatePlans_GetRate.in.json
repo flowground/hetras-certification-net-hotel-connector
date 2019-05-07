@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "rateplanCode": {
+            "required": true,
+            "type": "string"
+        },
+        "businessDay": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "sellingStatus": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Active",
+                "Inactive",
+                "All"
+            ]
+        },
+        "commissionable": {
+            "required": false,
+            "type": "boolean"
+        },
+        "group": {
+            "required": false,
+            "type": "string"
+        },
+        "baseRateplan": {
+            "required": false,
+            "type": "string"
+        },
+        "channelGroup": {
+            "required": false,
+            "type": "string"
+        },
+        "channelCode": {
+            "required": false,
+            "type": "string"
+        },
+        "marketCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "roomTypes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "includedServices": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "top": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "inlinecount": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "AllPages"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

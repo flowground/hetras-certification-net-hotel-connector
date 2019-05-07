@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "rateplanCode": {
+            "required": true,
+            "type": "string"
+        },
+        "from": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "to": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "requestBody": {
+            "items": {
+                "properties": {
+                    "from": {
+                        "type": "string"
+                    },
+                    "op": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "properties": {},
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "properties": {},
+            "type": "array"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

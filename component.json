@@ -1,0 +1,436 @@
+{
+    "title": "hetras Hotel API Version 0",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/hetras-certification.net/hotel/v0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.hetras-certification.net/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Hotels_GetHotels": {
+            "main": "./lib/actions/Hotels_GetHotels.js",
+            "title": "Get a list of all the hotels of a chain your application has access to.",
+            "description": "Load the details about all the hotels your application has access to.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Hotels_GetHotels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Hotels_GetHotel": {
+            "main": "./lib/actions/Hotels_GetHotel.js",
+            "title": "Get the details of the hotel with the speccified hotel id.",
+            "description": "Load the details about the specified hotel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Hotels_GetHotel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Codes_GetCodes": {
+            "main": "./lib/actions/Codes_GetCodes.js",
+            "title": "Get a list of codes for the specified hotel either filtered by type or code.",
+            "description": "With this call you can find codes for a hotel by type or code. By default and without any filter criteria\r\n            defined it will return you all available codes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Codes_GetCodes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Codes_GetCode": {
+            "main": "./lib/actions/Codes_GetCode.js",
+            "title": "Get all the details for a specific code available for the hotel.",
+            "description": "Read the details about a specific code available for the defined hotel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Codes_GetCode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_GetRateplans": {
+            "main": "./lib/actions/RatePlans_GetRateplans.js",
+            "title": "Get a list of rateplans for the specified hotel id matching the filter criteria.",
+            "description": "With this call you can find rateplans for a hotel by different filters. By default and without any filter criteria\r\n            defined it will return you all active rateplans.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_GetRateplans.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_GetRateplansCount": {
+            "main": "./lib/actions/RatePlans_GetRateplansCount.js",
+            "title": "Get the count of all rateplans in the hotel matching the given filter criteria.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_GetRateplansCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_BatchUpdateRates": {
+            "main": "./lib/actions/RatePlans_BatchUpdateRates.js",
+            "title": "Update a list of base rateplans for a given period and a given base price for single occupancy.",
+            "description": "Currently this call only allows to set the base price for non-derived rateplans if the rateplan\r\n            is active and already loaded for the specified time period.\r\n            <br /><br />\r\n            A request example:<br /><pre>\r\n            [\r\n              {\r\n                \"rateplan\": \"STDN01\", \"from\": \"2018-01-01\", \"to\": \"2018-01-30\", \"base_price\": 120.00\r\n              }\r\n            ]\r\n            </pre><br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.<br />",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_BatchUpdateRates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_GetRateplan": {
+            "main": "./lib/actions/RatePlans_GetRateplan.js",
+            "title": "Get all the details for a specific rateplan in the hotel.",
+            "description": "Read the details about a specific rateplan for the defined hotel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_GetRateplan.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_GetRates": {
+            "main": "./lib/actions/RatePlans_GetRates.js",
+            "title": "Get the setup of the daily rates for a specific rateplan and a defined timeperiod.",
+            "description": "With this call you can read the daily rates setup including the cancellation policy and minimum guarantee per day for the\r\n            specified rateplan. You can specify a timeperiod to read the daily rates for. The rateplan needs to be active for at least\r\n            one business day in the defined time period and have rates loaded.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_GetRates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_PatchRates": {
+            "main": "./lib/actions/RatePlans_PatchRates.js",
+            "title": "Partially update a rate of the specified rateplan for the defined time period.",
+            "description": "The hetras API is using this <a href=\"https://developer.hetras.com/docs/patch\" onfocus=\"this.blur()\" target=\"_blank\">Patch Specification</a>\r\n            to partially update an existing resource. Currently this call only allows to set the base price for non-derived rateplans if the rateplan\r\n            is active and already loaded for the specified time period.\r\n            <br /><br />\r\n            A request example:<br /><pre>\r\n            [\r\n              {\r\n                \"op\": \"replace\", \"path\": \"/base_price\", \"value\": 120.00\r\n              }\r\n            ]\r\n            </pre><br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.<br />",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_PatchRates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_GetRatesCount": {
+            "main": "./lib/actions/RatePlans_GetRatesCount.js",
+            "title": "Get the count of all active and loaded daily rates for the defined rateplan in a specified time period.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_GetRatesCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_GetRate": {
+            "main": "./lib/actions/RatePlans_GetRate.js",
+            "title": "Get the setup of a daily rate for a specific business day and rateplan.",
+            "description": "Read the setup of the daily rate for the defined rateplan for that specific business day.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_GetRate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RatePlans_PatchRate": {
+            "main": "./lib/actions/RatePlans_PatchRate.js",
+            "title": "Partially update a rate of the specified rateplan for a defined business day.",
+            "description": "The hetras API is using this <a href=\"https://developer.hetras.com/docs/patch\" onfocus=\"this.blur()\" target=\"_blank\">Patch Specification</a>\r\n            to partially update an existing resource. Currently this call only allows to set the base price for non-derived rateplans if the rateplan\r\n            is active and already loaded for the specified business day.\r\n            <br /><br />\r\n            A request example:<br /><pre>\r\n            [\r\n              {\r\n                \"op\": \"replace\", \"path\": \"/base_price\", \"value\": 120.00\r\n              }\r\n            ]\r\n            </pre><br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.<br />",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RatePlans_PatchRate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RoomTypes_GetRoomTypes": {
+            "main": "./lib/actions/RoomTypes_GetRoomTypes.js",
+            "title": "Get a list with the details of all room types for for the specified hotel id.",
+            "description": "With this call you can load the details about a all available room types for the specified hotel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RoomTypes_GetRoomTypes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RoomTypes_GetRoomType": {
+            "main": "./lib/actions/RoomTypes_GetRoomType.js",
+            "title": "Get all the details for a specific room type in the hotel.",
+            "description": "With this call you can load the details about a specific room type in the hotel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RoomTypes_GetRoomType.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Rooms_GetRooms": {
+            "main": "./lib/actions/Rooms_GetRooms.js",
+            "title": "Get a list of rooms using the provided filtering and pagination criteria.",
+            "description": "Find all rooms for the hotel that match the specified filter criteria. The filtering will be done based on the current state of\r\n            the rooms.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Rooms_GetRooms.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Rooms_GetRoomsCount": {
+            "main": "./lib/actions/Rooms_GetRoomsCount.js",
+            "title": "Get the count of all rooms in the hotel matching the given filter criteria.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Rooms_GetRoomsCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Rooms_GetAvailableRooms": {
+            "main": "./lib/actions/Rooms_GetAvailableRooms.js",
+            "title": "Request available rooms using a given criteria.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Rooms_GetAvailableRooms.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Rooms_GetRoom": {
+            "main": "./lib/actions/Rooms_GetRoom.js",
+            "title": "Get all the details for a specific room in the hotel.",
+            "description": "With this call you can load the details about a specific room in the hotel. It will show you the current status of the room.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Rooms_GetRoom.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Rooms_PatchRoom": {
+            "main": "./lib/actions/Rooms_PatchRoom.js",
+            "title": "Partially updates a room.",
+            "description": "The hetras API is using this <a href=\"https://developer.hetras.com/docs/patch\" onfocus=\"this.blur()\" target=\"_blank\">Patch Specification</a>\r\n            to partially update an existing resource. Currently this call only allows to modify condition and housekeeping occupancy status of the room.\r\n            <br /><br />\r\n            A request example:<br /><pre>\r\n            [\r\n              {\r\n                \"op\": \"replace\", \"path\": \"/status/condition\", \"value\": \"CleanNotInspected\"\r\n              }, {\r\n                \"op\": \"replace\", \"path\": \"/status/housekeeping_occupancy\", \"value\": \"Vacant\"\r\n              }\r\n            ]\r\n            </pre><br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.<br />",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Rooms_PatchRoom.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "YieldableRates_SavePrices": {
+            "main": "./lib/actions/YieldableRates_SavePrices.js",
+            "title": "Saves Yieldable Rate Prices for existing Yieldable Rateplan.",
+            "description": "Saves Yieldable Rate Prices for existing Yieldable Rateplan. The rateplan has been created before and with this End Point we \r\n            create or update the rate prices. If the Yieldable rateplan prices exist it updates them with the new price if not it creates new price entries.<br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/YieldableRates_SavePrices.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

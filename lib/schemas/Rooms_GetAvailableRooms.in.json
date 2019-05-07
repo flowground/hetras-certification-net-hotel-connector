@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "from": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "to": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "adults": {
+            "required": false,
+            "type": "string",
+            "format": "byte"
+        },
+        "includeOutOfService": {
+            "required": false,
+            "type": "boolean"
+        },
+        "roomTypes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "amenities": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "views": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "locations": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "top": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "inlinecount": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "AllPages"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
